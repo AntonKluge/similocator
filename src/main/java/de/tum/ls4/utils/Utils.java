@@ -95,17 +95,19 @@ public class Utils {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static Map<String, Object> checkedCastToMap(Object object) {
-        if (object instanceof Map) {
-            return checkedCastToMap(object);
+        if (object instanceof Map<?, ?> map) {
+            return (Map<String, Object>) map;
         } else {
             throw new RuntimeException("Could not cast object to Map<String, Object>");
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static List<Object> checkedCastToList(Object object) {
-        if (object instanceof List) {
-            return checkedCastToList(object);
+        if (object instanceof List<?> list) {
+            return (List<Object>) list;
         } else {
             throw new RuntimeException("Could not cast object to List<Object>");
         }
